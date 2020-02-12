@@ -1,0 +1,74 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <input type="hidden" name="Id" [value]="service.formData.Id">
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+          <i class="fas fa-user-circle" [class.green-icon]="Name.valid" [class.red-icon]="Name.invalid && Name.touched"></i>
+        </div>
+      </div>
+      <input name="Name" #Name="ngModel" [(ngModel)]="service.formData.Name" class="form-control"
+        placeholder="Prénom du patient" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+          <i class="fas fa-user-circle" [class.green-icon]="AfterName.valid" [class.red-icon]="AfterName.invalid && AfterName.touched"></i>
+        </div>
+      </div>
+      <input name="AfterName" #AfterName="ngModel" [(ngModel)]="service.formData.AfterName" class="form-control"
+        placeholder="Nom du patient" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+          <i class="far fa-phone"  [class.green-icon]="Phone.valid" [class.red-icon]="Phone.invalid && Phone.touched"></i>
+        </div>
+      </div>
+      <input name="Phone" #Phone="ngModel" [(ngModel)]="service.formData.Phone" 
+      class="form-control" placeholder="Téléphone" required maxlength="20" minlength="8">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+          <i class="far fa-adress-book"  [class.green-icon]="Adress.valid" [class.red-icon]="Adress.invalid && Adress.touched"></i>
+        </div>
+      </div>
+      <input name="Adress" #Adress="ngModel" [(ngModel)]="service.formData.Adress" 
+      class="form-control" placeholder="Adresse" maxlength="50" minlength="0">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-7">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+            <i class="fas fa-calendar-alt"  [class.green-icon]="BirthDate.valid" [class.red-icon]="BirthDate.invalid && BirthDate.touched"></i>
+          </div>
+        </div>
+        <input name="BirthDate" #BirthDate="ngModel" [(ngModel)]="service.formData.BirthDate" class="form-control"
+          placeholder="MM/YY/AAAA" required maxlength="10" minlength="10">
+      </div>
+    </div>
+
+    <div class="form-group col-md-5">
+      <div class="input-group">
+        Actif: <input type="checkbox" name="isActive" #isActive="ngModel" [(ngModel)]="service.formData.isActive" class="form-control" ng-true-value="'True'" ng-false-value="'False'" required>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group">
+    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid"><i class="fas fa-database"></i> Enregistrer</button>
+  </div>
+</form>
